@@ -1,5 +1,5 @@
 # First read general
-
+these notes are made outside of a lean environment and I am too lazy to copy unicode characters around, so you will instead so escape sequences
 ## definining constants
 ```lean
 def m : Nat := 1
@@ -19,12 +19,13 @@ expression -- comment
 comment
 -/
 ```
-
+\
 ## evaluating an expression
 ```lean
 #eval 5 * 4
 #eval expression
 ```
+
 
 ## accessing individual components
 ```lean
@@ -58,11 +59,12 @@ variables are now only defined in the section they are declared in. Note that va
 a similar thing can be achieved with namespaces and definitions, however the scope can be reopened (or accessed by using namespacename.definition name
 
 ## useful unicode shortcuts
-\to or \r for a right arrow
-\times for kartesian product
-\a alpha
-\b beta
-\g gamma
+| Escape Sequence | Description |
+| \to or \r | right arrow     | 
+| \times | kartesian product  | 
+| \a | alpha | 
+| \b | beta |
+| \g | gamma |
 
 
 
@@ -70,6 +72,42 @@ a similar thing can be achieved with namespaces and definitions, however the sco
 
 
 # First read tactics
+- alternative approach to construcitng proofs
+- instructions on building a proof
+- should enable more automation, but can be harder to read at times
+
+## steps
+- create a goal by starting a theorem or by introdunve a have statement
+- tactics can used instead of terms with the by keyword
+```lean
+theorem test (p q : Prop) (hp : p) (hq : q) : p \and q \and p := by
+  apply And.intro
+  exact hp
+  apply And.intro
+  exact hq
+  exact hp
+```
+
+resulting proof terms can be seen with #print
+to see live goals from the line your cursor is in, press C-c TAB (emacs) or Ctrl-Shift-Enter
+
+use tag notation to prove certain tags
+```lean
+case left => exact hp
+case right =>
+  more tactics
+  more tactics
+```
+
+
+
+## Tactics
+| Tactic | Description |
+| apply | applies expression as function, can have arguments |
+| exact | apply, but goal should be filled exactly |
+| intro | introducing a hypothesis, mainly used to show implications (turn the start into a hypthesis) |
+
+
 
 
 
