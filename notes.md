@@ -60,6 +60,7 @@ a similar thing can be achieved with namespaces and definitions, however the sco
 
 ## useful unicode shortcuts
 | Escape Sequence | Description |
+| ---- | ------ |
 | \to or \r | right arrow     | 
 | \times | kartesian product  | 
 | \a | alpha | 
@@ -103,6 +104,7 @@ case right =>
 
 ## Tactics
 | Tactic | Description |
+| ------ | ------ |
 | apply | applies expression as function, can have arguments |
 | exact | apply, but goal should be filled exactly |
 | intro | introducing a hypothesis, mainly used to show implications (turn the start into a hypthesis) |
