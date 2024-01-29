@@ -103,11 +103,23 @@ case right =>
 
 
 ## Tactics
-| Tactic | Description |
-| ------ | ------ |
-| apply | applies expression as function, can have arguments |
-| exact | apply, but goal should be filled exactly |
-| intro | introducing a hypothesis, mainly used to show implications (turn the start into a hypthesis) |
+| Tactic | Description | Use |
+| ------ | ------ | ----- |
+| apply | applies expression as function, can have arguments | interactive function application |
+| exact | apply, but goal should be filled exactly | check goal completion |
+| intro | introducing a hypothesis, mainly used to show implications (turn the start into a hypthesis) | interactive funciton abstraction |
+| assumption | trys to find assumption in hyptheses to complete goal | you don't want to use exact? |
+| rfl | exact rfl | you have an equal sign and both sides say the same thing |
+| repeat | repeat a tactic multiple times | you want to do the same thing multiple times |
+| revert | opposite of intro (kind of) | gets you an implication by moving hypthesis into the goal |
+| generalize | replacing an expression in the goal with a fresh variable | you know something holds for all of a type and you have a specific of that type |
+| admit | same as sorry | you cannot finish a proof right now |
+| intros | intro but for multiple variable without names | you don't need to name the hypotheses you are introducing |
+| cases | kind of like introducing multiple cases, but they don't need a name | you don't care about naming |
+
+
+
+you can specify names to intro to reference later. If you do not specify names, they are not accessible
 
 
 

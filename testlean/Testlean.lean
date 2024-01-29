@@ -34,8 +34,23 @@ example (p q r : Prop) : p ∧ (q ∨ r) ↔ (p ∧ q) ∨ (p ∧ r) := by
       . apply Or.inr
         exact And.right hpr
 
-example (α : Type) : α → α := by
+theorem exampleSelfImplication (α : Type) : α → α := by
   intro a
   exact a
 
+example : ∀ a b c : Nat, a = b → a = c → c = b := by
+  intros
+  apply Eq.trans
+  apply Eq.symm
+  assumption
+  assumption
+
+example : 2 + 3 = 5 := by
+  admit
+
+example : 2 + 3 = 5 := 
+  sorry
+  
+
 #print test
+#print exampleSelfImplication
