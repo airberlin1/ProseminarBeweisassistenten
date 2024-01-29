@@ -1,5 +1,5 @@
 # First read general
-these notes are made outside of a lean environment and I am too lazy to copy unicode characters around, so you will instead so escape sequences
+these notes are made outside of a lean environment and I am too lazy to copy unicode characters around, so here are some escape sequences that might not be accurate
 ## definining constants
 ```lean
 def m : Nat := 1
@@ -19,7 +19,7 @@ expression -- comment
 comment
 -/
 ```
-\
+
 ## evaluating an expression
 ```lean
 #eval 5 * 4
@@ -66,8 +66,10 @@ a similar thing can be achieved with namespaces and definitions, however the sco
 | \a | alpha | 
 | \b | beta |
 | \g | gamma |
-
-
+| \and | logic and |
+| \or | logic or |
+| \iff | equivalence |
+| \l | left arrow |
 
 
 
