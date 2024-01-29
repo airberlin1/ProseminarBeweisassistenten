@@ -127,4 +127,31 @@ you can specify names to intro to reference later. If you do not specify names, 
 
 
 
-# Example ideas
+# Notizen zur Präsentation
+## Tactics?
+### Interaktive Beweisführung
+- Zwischenstand bei der Beweisführung wird aktiv angezeigt
+- Anwenden von Funktionen und Definitionen ähnlich wie mit den Terms
+- Erlaubt Automatisierung
+### Strukturiertes Aufteilen von Teilzielen
+- Cases im Laufe der Präsentation
+- mehr dazu in der späteren Präsentation
+### Erstellen eines Beweisterms
+- Code wie vorher
+- Ausgabe durch #print
+## Beispiele zu Tactics?
+### tacticsIntro
+- by keyword
+### tacticsMoreAdvanced
+- show goal in live view
+  - in VSCode with ctrlshiftreturn
+### print tacticsMoreAdvanced
+- zeigen, dass das bereits vorher gemacht wurde
+
+
+
+## Apply
+
+
+## Beispiele zu Apply
+

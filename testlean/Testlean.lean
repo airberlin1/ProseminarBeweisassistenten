@@ -50,7 +50,51 @@ example : 2 + 3 = 5 :=
 #print exampleSelfImplication
 
 
+
+
+
+
+
+
+
+
+
+
 -- examples for presentation
+
+-- for Tactics?
+theorem tacticsIntro : ∃ (p : Nat),  p = 5 := by
+ exists 5
+
+theorem tacticsMoreAdvanced (n : Nat) (h : n = 2) : n + n = 4 := by
+  revert h
+  intro h
+  rw [h]
+
+#print tacticsMoreAdvanced
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- for Apply
+
 theorem applyIntro : ∀ (p q : Prop), p ∧ q → p := by
   apply And.left
 
@@ -61,12 +105,14 @@ theorem applyMoreAdvanced (p q : Prop) (hp : p) (hq : q) : p ∧ q := by
   apply hq
 
 
+-- for Intro
+
 theorem exactIntro (p q : Prop) (hp : p) (hq : q) : p ∧ q := by
   apply And.intro
   exact hp
   exact hq
 
-theorem introIntro (α : Type) :  α → α := by
+theorem introIntro (α : Type) :  α → α := by  -- this is found exactly in the provided pdf
   intro h
   exact h
 
@@ -78,5 +124,11 @@ theorem introMoreAdvanced (x y : Nat) : x + 0 = y → x = y := by
   intro h
   rw [add_zero] at h
   exact h
-  
+
+-- for Cases
+
+
+-- for further Tactics
+
+-- tasks for second half (with solutions)
 
