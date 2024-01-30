@@ -128,6 +128,8 @@ you can specify names to intro to reference later. If you do not specify names, 
 
 
 # Notizen zur Präsentation
+
+
 ## Tactics?
 ### Interaktive Beweisführung
 - Zwischenstand bei der Beweisführung wird aktiv angezeigt
@@ -151,6 +153,16 @@ you can specify names to intro to reference later. If you do not specify names, 
 
 
 ## Apply
+### Interaktives Anwenden einer Funktion
+- Anwenden der Funktion nach apply auf das aktuelle Ziel
+- Es können Funktionsparameter übergeben werden
+### Anpassen des Ziels
+- Lean fasst die Schlussfolgerung aus der Anwendung der Funktion mit dem Ziel zusammen, ein neues Ziel entsteht
+- siehe Änderung in Live-Ansicht
+### Erstellen von Zwischenzielen
+- Aufrufen von apply kann mehrere Zwischenziele zur Folge haben
+- Siehe Live-Ansicht
+- Diese können nacheinander gelöst werden, später siehe cases
 
 
 ## Beispiele zu Apply
