@@ -166,4 +166,18 @@ you can specify names to intro to reference later. If you do not specify names, 
 
 
 ## Beispiele zu Apply
+### applyIntro
+- Anwenden von And.left, sodass das linke Element als wahr gesehen wird (denn beide muessen wahr sein)
+- Live-Ansicht zeigen
+### applyMoreAdvanced
+- mehrere Ziele nach erstem Apply, zeigen in Live-Ansicht
+- nacheinander bearbeiten der Ziele
+- ändere apply zu exact
+  - exact nutzen, wenn ein ziel erfüllt sein soll
+  - gibt fehlermeldung, wenn kein ziel erfuellt wurde
+
+
+------
+reden bis hier nimmt ca. 10 min in Anspruch
+
 
