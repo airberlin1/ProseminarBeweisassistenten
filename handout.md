@@ -12,8 +12,8 @@ Alle Beispiele sowie die Aufgaben findet ihr auch unter TODO
 - Automatisierungen möglich
 ```lean
 example : ∃ (p : Nat),  p = 5 := by  -- by startet einen Tactics-Abschnitt
-	exists 5                         -- tactics werden verwendet, um die Aussage zu beweisen
-```
+	exists 5-- tactics werden verwendet, um die Aussage zu beweisen
+	```
 # Apply
 - apply function [parameters]
 - apply ist die Interaktive Anwendung einer Funktion
@@ -32,12 +32,12 @@ theorem applyMoreAdvanced (p q : Prop) (hp : p) (hq : q) : p ∧ q := by
   apply And.intro    -- teilt das Ziel in zwei einzelne Ziele, p und q
   exact hp           -- Anwenden von hp : p auf p erreicht das erste Ziel
   exact hq           -- Erreichen des zweiten (und damit letzten) Ziels
-```
+  ```
 # Intro
 - Einführen neuer Variablen
 - Umwandeln von Implikationen in Annahme und Ziele
 ```lean
-theorem introIntro (α : Type) :  α → α := by  -- this is found exactly in the provided pdf
+theorem introIntro (α : Type) :  α → α := by
   intro h  -- erstellt (h : α)
   exact h
 ```
@@ -49,11 +49,11 @@ theorem introForall : ∀ (α : Nat), α + 0 = α := by
 ```
 - Implizietes Matchen mehrere Variablen
 ```lean
-theorem introImplicitMatch (α : Type) (p q : α → Prop) : (∃ x, p x ∧ q x) → ∃ x, q x ∧ p x := by
+example (α : Type) (p q : α → Prop) : (∃ x, p x ∧ q x) → ∃ x, q x ∧ p x := by
   intro ⟨w, hpw, hqw⟩  -- erstellt w : α, hpw: p w, hqw : q w
   exact ⟨w, hqw, hpw⟩
 ```
-- Nutze Intros, um "alle" Variablen einzuführen, ohne diese explizit zu bennen
+			- Nutze Intros, um "alle" Variablen einzuführen, ohne diese explizit zu bennen
 # Cases
 - Einzelne Cases können erstellt werden, die einzeln bewiesen werden
 - Nutze cases CaseName => oder ., um zwischen den einzelnen Cases zu unterscheiden
@@ -126,4 +126,27 @@ example : ∃ (p : Nat),  p = 5 := by
 ```
 
 # Aufgaben
+```lean
+example (p q : Prop) : p ∧ q → p ∨ q := by
+  admit
+```
 
+```lean
+example (x : Nat) : x ≤ 0 → x = 0 := by
+  admit
+```
+
+```lean
+example (x y : Nat) (hx: x ≤ y) : ∃ (a : Nat), x + a = y := by
+  admit
+```
+
+```lean
+example (x y : Nat) (hx : x = 3) (hy : x + y  = 6) : x = y := by
+  admit
+```
+
+```lean
+example (p q r : Prop) : p ∨ (q ∧ r) ↔ (p ∨ q) ∧ (p ∨ r) := by
+  admit
+```

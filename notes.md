@@ -182,10 +182,6 @@ you can specify names to intro to reference later. If you do not specify names, 
   - gibt fehlermeldung, wenn kein ziel erfuellt wurde
 
 
-------
-reden bis hier nimmt ca. 10 min in Anspruch
-------
-
 ## Intro Folie 1
 ### Einführen von Variablen
 - führt variablen ein, zum Beispiel für Implikationen, Behauptungen
@@ -227,9 +223,6 @@ reden bis hier nimmt ca. 10 min in Anspruch
 - Beweis dann über mehrere Cases
   - zeigen der Live-Ansicht!
 
-----
-Intros reden dauert ca. 10 min
-----
 
 ## Cases
 ### verschiedene Zwischenziele
@@ -306,9 +299,5 @@ Intros reden dauert ca. 10 min
 - Beispiel vom Beginn
 ### maybe
 ### Constructor
-- denke nicht, dass ich das mache, muss mal Zeit angucken
 ### contradiction
 ### match
-----
-weitere Tactics benoetigen aktuell 8-9 min
-----

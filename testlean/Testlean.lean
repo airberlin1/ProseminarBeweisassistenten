@@ -1,58 +1,5 @@
 
 
-theorem add_zero (x : Nat) : x + 0 = x := by
-  sorry
-
-example (p q r : Prop) : p ∧ (q ∨ r) ↔ (p ∧ q) ∨ (p ∧ r) := by
-  apply Iff.intro
-  . intro h
-    apply Or.elim (And.right h)
-    . intro hq
-      apply Or.inl
-      apply And.intro
-      . exact And.left h
-      . exact hq
-    . intro hr
-      apply Or.inr
-      apply And.intro
-      . exact And.left h
-      . exact hr
-  . intro h
-    apply Or.elim h
-    . intro hpq
-      apply And.intro
-      . exact And.left hpq
-      . apply Or.inl
-        exact And.right hpq
-    . intro hpr
-      apply And.intro
-      . exact And.left hpr
-      . apply Or.inr
-        exact And.right hpr
-
-
-theorem exampleSelfImplication (α : Type) : α → α := by
-  intro a
-  exact a
-
-example : ∀ a b c : Nat, a = b → a = c → c = b := by
-  intros
-  apply Eq.trans
-  apply Eq.symm
-  repeat assumption
-
-example : 2 + 3 = 5 := by
-  admit
-
-example : 2 + 3 = 5 := 
-  sorry
-  
-
-#print exampleSelfImplication
-
-
-
-
 
 
 
@@ -140,7 +87,7 @@ theorem applyMoreAdvanced (p q : Prop) (hp : p) (hq : q) : p ∧ q := by
 
 -- for Intro
 
-theorem introIntro (α : Type) :  α → α := by  -- this is found exactly in the provided pdf
+theorem introIntro (α : Type) :  α → α := by
   intro h
   exact h
 
@@ -262,9 +209,83 @@ example (a : Nat) (ha : a = 2) : a + 2 = 4 := by
 example : ∃ (p : Nat),  p = 5 := by
   exists 5
 
--- Constructor?
+
+
+-- big example, different ways, if there is still time
+example (p q r : Prop) : p ∧ (q ∨ r) ↔ (p ∧ q) ∨ (p ∧ r) := by
+  apply Iff.intro
+  . intro h
+    apply Or.elim (And.right h)
+    . intro hq
+      apply Or.inl
+      apply And.intro
+      . exact And.left h
+      . exact hq
+    . intro hr
+      apply Or.inr
+      apply And.intro
+      . exact And.left h
+      . exact hr
+  . intro h
+    apply Or.elim h
+    . intro hpq
+      apply And.intro
+      . exact And.left hpq
+      . apply Or.inl
+        exact And.right hpq
+    . intro hpr
+      apply And.intro
+      . exact And.left hpr
+      . apply Or.inr
+        exact And.right hpr
+
+example (p q r : Prop) : p ∧ (q ∨ r) ↔ (p ∧ q) ∨ (p ∧ r) := by
+  apply Iff.intro 
+  . intro h
+    cases h with 
+    | intro hp hqr =>
+      cases hqr
+      . apply Or.inl; constructor <;> assumption
+      . apply Or.inr; constructor <;> assumption
+  . intro h
+    cases h with
+    | inl hpq =>
+      cases hpq with 
+      | intro hp hq => constructor; exact hp; apply Or.inl; exact hq
+    | inr hpr => 
+      cases hpr with 
+      | intro hp hr => constructor; exact hp; apply Or.inr; exact hr
+
 
 
 
 -- tasks for second half (with solutions)
+
+example (p q : Prop) : p ∧ q → p ∨ q := by
+  -- solution
+  intro h
+  cases h
+  apply Or.inl
+  assumption
+
+example (x : Nat) : x ≤ 0 → x = 0 := by
+  -- solution
+  intro hx
+  cases hx with
+  | refl => rfl
+
+example (x y : Nat) (hx: x ≤ y) : ∃ (a : Nat), x + a = y := by
+  -- solution
+  -- TODO
+  admit
+
+example (x y : Nat) (hx : x = 3) (hy : x + y  = 6) : x = y := by
+  -- solution
+  -- TODO
+  admit
+
+example (p q r : Prop) : p ∨ (q ∧ r) ↔ (p ∨ q) ∧ (p ∨ r) := by
+  -- solution
+  -- TODO
+  admit
 
