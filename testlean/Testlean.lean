@@ -199,6 +199,23 @@ theorem casesCombined (p q : Prop) (hp : p) (hq : q) : p ∧ q ∧ p := by
   . exact hp
 
 -- for cases again, this time the real cases
+theorem casesUnstructured (p q : Prop) : p ∨ q → q ∨ p := by
+  intro h
+  cases h
+  apply Or.inr
+  assumption
+  apply Or.inl
+  assumption
+
+theorem casesStructured (p q : Prop) : p ∨ q → q ∨ p := by
+  intro h 
+  cases h with 
+  | inr hq => apply Or.inl; exact hq
+  | inl hp => apply Or.inr; exact hp
+
+theorem casesMore (p : Prop) : p ∨ p → p := by
+  intro h
+  cases h <;> assumption
 
 -- for further Tactics
 

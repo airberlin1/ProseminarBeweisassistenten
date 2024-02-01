@@ -67,7 +67,14 @@ theorem casesIntro (p q : Prop) (hp : p) (hq : q) : p ∧ q ∧ p := by
     . exact hq  -- Schreibweise mit .
     . exact hp
 ```
-
+- Erstellen von cases mit cases Keyword
+```lean 
+theorem casesStructured (p q : Prop) : p ∨ q → q ∨ p := by
+  intro h 
+  cases h with -- erstellt cases inr mit Annahme hq und inl mit Annahme hp
+  | inr hq => apply Or.inl; exact hq
+  | inl hp => apply Or.inr; exact hp
+```
 # Weitere Tactics
 ## Admit
 - sorry in einem Tactics-Abschnitt

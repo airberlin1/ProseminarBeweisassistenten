@@ -247,7 +247,25 @@ Intros reden dauert ca. 10 min
 - Cases werden in Reihenfolge der Aufzählung in Live-Ansicht bearbeitet
 - Wenn unsicher, was aktueller case ist, Live-Ansicht nutzen
 ### casesCombined
+- wir können die Schreibweise beliebig kombinieren
 
+## noch eine Cases Folie
+- wie können wir solche Abzweigungen selbst herbeiführen oder kontrollieren
+- Strukturiert wie match aus vorherigem Vortrag
+- Unstrukturiert mit Schreibweise wie oben
+## mehr Beispiele
+### casesUnstructured
+- Live-Ansicht!
+- aufteilen des oder Ausdrucks mit cases
+- beweisen der einzelnen cases
+
+### casesStructured
+- Live-Ansicht
+- erlaubt unterschiedliche Reihenfolge und zugriff auf einzelne Cases mit Namen
+
+### casesMore
+- <;> wendet die Tactic auf alle cases an, die von cases erstellt wurde
+- kann auch auf andere Tactics (apply) angewendet werden, die mehrere Cases erstellt
 
 ## Weitere Tactics
 ### Admit
