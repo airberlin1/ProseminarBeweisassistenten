@@ -168,13 +168,37 @@ theorem introForall : ∀ (α : Nat), α + 0 = α := by
   apply Nat.add_zero 
 
 theorem introsIntro ( a b c : Nat) : a = b → a = c → c = b := by
-  intros
+  intros 
   apply Eq.trans
   apply Eq.symm
   repeat assumption
 
 -- for Cases
+theorem casesIntro (p q : Prop) (hp : p) (hq : q) : p ∧ q ∧ p := by
+  apply And.intro
+  case left =>
+    exact hp
+  case right =>
+    apply And.intro
+    case left => exact hq
+    case right => exact hp
 
+theorem casesWithDots (p q : Prop) (hp : p) (hq : q) : p ∧ q ∧ p := by
+  apply And.intro
+  . exact hp
+  . apply And.intro
+    . exact hq
+    . exact hp
+
+theorem casesCombined (p q : Prop) (hp : p) (hq : q) : p ∧ q ∧ p := by
+  apply And.intro
+  case right =>
+    apply And.intro
+    . exact hq
+    . exact hp
+  . exact hp
+
+-- for cases again, this time the real cases
 
 -- for further Tactics
 

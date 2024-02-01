@@ -70,6 +70,11 @@ a similar thing can be achieved with namespaces and definitions, however the sco
 | \or | logic or |
 | \iff | equivalence |
 | \l | left arrow |
+|\rangle | komische Dreiecksklammer zu |
+| \langle | die Klammer auf |
+| \forall | forall Zeichen |
+| \ex | exists Zeichen |
+| \n | logic not |
 
 
 
@@ -222,8 +227,26 @@ reden bis hier nimmt ca. 10 min in Anspruch
 - Beweis dann über mehrere Cases
   - zeigen der Live-Ansicht!
 
+----
+Intros reden dauert ca. 10 min
+----
+
 ## Cases
+### verschiedene Zwischenziele
+- können verschieden erzeugt werden
+- case Name => lässt das Ziel lösen, welches durch Name benannt ist
+- . Notation, wenn Namen nicht bekannt oder nicht wichtig sind
 ## Beispiele zu Cases 1
+### casesIntro
+- And.intro teilt hypothese und Ziel in verschiedene Cases auf
+- Es können sich auch die Annahmen unterscheiden!
+- mit case right bzw. case left kann ein case ausgewählt werden, der behandelt werden soll
+- Es kann in der nächsten Zeile eingerückt weitergeschrieben werden oder in derselben Zeile
+### casesWithDots
+- es passiert das gleiche wie mit namen
+- Cases werden in Reihenfolge der Aufzählung in Live-Ansicht bearbeitet
+- Wenn unsicher, was aktueller case ist, Live-Ansicht nutzen
+### casesCombined
 
 
 ## Weitere Tactics
