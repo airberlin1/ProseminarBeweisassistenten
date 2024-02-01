@@ -140,23 +140,15 @@ theorem applyMoreAdvanced (p q : Prop) (hp : p) (hq : q) : p ∧ q := by
 
 -- for Intro
 
-theorem exactIntro (p q : Prop) (hp : p) (hq : q) : p ∧ q := by
-  apply And.intro
-  exact hp
-  exact hq
-
 theorem introIntro (α : Type) :  α → α := by  -- this is found exactly in the provided pdf
   intro h
   exact h
 
-theorem rwIntro (x y : Nat) : x = y → y = x := by
-  intro h
-  rw [h]
+#print introIntro
 
-theorem introMoreAdvanced (x y : Nat) : x + 0 = y → x = y := by
-  intro h
-  rw [add_zero] at h
-  exact h
+theorem introMoreAdvanced (x y : Nat) : x = 2 → y = 2 → x + y = 4 := by
+  intro hx hy
+  rw [hx]; rw[hy]
 
 
 
@@ -175,8 +167,11 @@ theorem introForall : ∀ (α : Nat), α + 0 = α := by
   intro a
   apply Nat.add_zero 
 
-
--- theorem introsExample
+theorem introsIntro ( a b c : Nat) : a = b → a = c → c = b := by
+  intros
+  apply Eq.trans
+  apply Eq.symm
+  repeat assumption
 
 -- for Cases
 

@@ -183,9 +183,31 @@ reden bis hier nimmt ca. 10 min in Anspruch
 
 ## Intro Folie 1
 ### Einführen von Variablen
+- führt variablen ein, zum Beispiel für Implikationen, Behauptungen
+- wie abstrakte Funktionen, aber interaktiv
 
 
 ## Beispiele zu Intro
+### introIntro
+- Implikation wird umgewandelt in Annahme und Ziel
+  - Live-Ansicht zeigen!
+- wird bennant nach dem wert, den wir angeben (hier h)
+- print ausgabe zeigen
+  - Fukntion wird erstellt
+### introMoreAdvanced
+- mehrere Variablen, die eingeführt werden
+- rw ist egal hier
+- hinweisen auf das Semikolon und die zwei tactics in einer Zeile
+
+## Intro Folie 2
+- Einführen von Variablen für Exists, Forall
+  - wie Sei bel. oder wir betrachten das x, das existiert
+- automatisches Matchten (auch match kann in Tactics verwendet werden)
+- intros statt intro nutzen, um so viele Variablen wie möglich ohne Namensgebung zu einzuführen
+  - Namen können dann auch nicht verwendet werden 2
+  - geht mit rename_i, dann werden inaccessible names neu benannt
+
+
 ## mehr Beispiele
 ### introImplicitMatch
 - kann wie match genutzt werden
@@ -195,6 +217,10 @@ reden bis hier nimmt ca. 10 min in Anspruch
 - Einführen von Variablen für Forall
 - kein exact, weil Type übereinstimmen müsste
   - exact ohne intro
+### introsIntro
+- Einführen von mehreren Variablen für die Einzelnen Annahmen
+- Beweis dann über mehrere Cases
+  - zeigen der Live-Ansicht!
 
 ## Cases
 ## Beispiele zu Cases 1
@@ -242,3 +268,6 @@ reden bis hier nimmt ca. 10 min in Anspruch
 - denke nicht, dass ich das mache, muss mal Zeit angucken
 ### contradiction
 ### match
+----
+weitere Tactics benoetigen aktuell 8-9 min
+----
