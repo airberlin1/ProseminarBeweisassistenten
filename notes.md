@@ -181,10 +181,64 @@ you can specify names to intro to reference later. If you do not specify names, 
 reden bis hier nimmt ca. 10 min in Anspruch
 ------
 
-## Intro
-## Beispiele zu Intro
+## Intro Folie 1
+### Einführen von Variablen
 
+
+## Beispiele zu Intro
+## mehr Beispiele
+### introImplicitMatch
+- kann wie match genutzt werden
+  - siehe match im ausgegebenen Term
+- Einführen von Variablen für Exists
+### introForall
+- Einführen von Variablen für Forall
+- kein exact, weil Type übereinstimmen müsste
+  - exact ohne intro
 
 ## Cases
 ## Beispiele zu Cases 1
 
+
+## Weitere Tactics
+### Admit
+- sorry für tactics
+### Beispiel Admit
+### Assumption
+- versucht alle aktuellen Annahmen anzuwennden, um das aktuelle Ziel zu lösen
+### Beispiel Assumption
+- eine Annahme reicht, assumption waehlt die richtige aus
+### Repeat
+- mehrmaliges Ausführen einer Tactic
+### Beispiel Repeat
+- beide Ziele können mit assumption gelöst werden
+### Revert
+- Gegenteil von Intro
+- kann Annahme und Ziel in eine Implikation im Ziel umwandeln
+- keine Ahnung, was der Sinn sein soll
+### Beispiel Revert
+- zeigen, wie sich das ziel verändert
+### Generalize 
+- Ersetzen von Ausdruck durch eine neue Variable
+- nuetzlich, wenn etwas bereits für alle Variablen eines Typs gezeigt wurde, und hier nur eine ist
+- Achtung: nicht alle generalisierungen sind wahr
+### Beispiel Generalize
+- x = x ist wahr unabhängig von x, daher nutzen wir generalize
+- rfl ist Kurzform von exact rfl
+- Verfälschung des Ziels, was tun?
+### Rewrite
+- ersetzt Ausdruck durch einen anderen Ausdruck
+- Rückgängig machen von generealize
+- mehr dazu in anderem Vortrag
+### Beispiel Rewrite
+- Namen geben von generalization
+- Nutzen von rewrite
+### Exists
+- angeben, welcher wert eine existenzsuche löst
+### Beispiel Exists
+- Beispiel vom Beginn
+### maybe
+### Constructor
+- denke nicht, dass ich das mache, muss mal Zeit angucken
+### contradiction
+### match
