@@ -13,7 +13,7 @@ Alle Beispiele sowie die Aufgaben findet ihr auch unter TODO
 ```lean
 example : ∃ (p : Nat),  p = 5 := by  -- by startet einen Tactics-Abschnitt
 	exists 5-- tactics werden verwendet, um die Aussage zu beweisen
-	```
+```
 # Apply
 - apply function [parameters]
 - apply ist die Interaktive Anwendung einer Funktion
@@ -32,7 +32,7 @@ theorem applyMoreAdvanced (p q : Prop) (hp : p) (hq : q) : p ∧ q := by
   apply And.intro    -- teilt das Ziel in zwei einzelne Ziele, p und q
   exact hp           -- Anwenden von hp : p auf p erreicht das erste Ziel
   exact hq           -- Erreichen des zweiten (und damit letzten) Ziels
-  ```
+```
 # Intro
 - Einführen neuer Variablen
 - Umwandeln von Implikationen in Annahme und Ziele
