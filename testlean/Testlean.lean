@@ -112,7 +112,7 @@ theorem introImplicitMatch (α : Type) (p q : α → Prop) : (∃ x, p x ∧ q x
 
 theorem introForall : ∀ (α : Nat), α + 0 = α := by
   intro a
-  apply Nat.add_zero 
+  exact Nat.add_zero a 
 
 theorem introsIntro ( a b c : Nat) : a = b → a = c → c = b := by
   intros 
@@ -162,7 +162,7 @@ theorem casesStructured (p q : Prop) : p ∨ q → q ∨ p := by
 
 theorem casesMore (p : Prop) : p ∨ p → p := by
   intro h
-  cases h <;> assumption
+  cases h <;> assumption --vielleicht nucht
 
 -- for further Tactics
 
@@ -260,6 +260,9 @@ example (p q r : Prop) : p ∧ (q ∨ r) ↔ (p ∧ q) ∨ (p ∧ r) := by
 
 
 -- tasks for second half (with solutions)
+theorem andFollows : p → q → p ∧ q := by
+  -- solution
+  exact And.intro
 
 example (p q : Prop) : p ∧ q → p ∨ q := by
   -- solution
@@ -276,16 +279,62 @@ example (x : Nat) : x ≤ 0 → x = 0 := by
 
 example (x y : Nat) (hx: x ≤ y) : ∃ (a : Nat), x + a = y := by
   -- solution
-  -- TODO
-  admit
+  -- this is bad because it uses rw and induction
+  -- and also I can't even solve it
+  induction y with
+  | zero =>
+    rw [Nat.zero_eq] at hx
+    rw [Nat.zero_eq]
+    exists 0
+    rw [Nat.add_zero]
+    apply Nat.eq_zero_of_le_zero
+    assumption  
+  | succ d hd =>
+    cases hx
+    . exists 0
+    . rename_i ha
+      revert hd
+      rw [Nat.le_eq] at ha
+      intro hd     
+      admit
 
 example (x y : Nat) (hx : x = 3) (hy : x + y  = 6) : x = y := by
   -- solution
-  -- TODO
-  admit
+  -- this is bad because it uses rw
+  rw [hx] at hy
+  rw [hx]
+  apply Eq.symm
+  apply Nat.add_left_cancel
+  rw [hy]
 
 example (p q r : Prop) : p ∨ (q ∧ r) ↔ (p ∨ q) ∧ (p ∨ r) := by
   -- solution
-  -- TODO
-  admit
-
+  apply Iff.intro
+  . intro h
+    apply And.intro  
+    . cases h
+      . apply Or.inl
+        assumption
+      . apply Or.inr
+        rename_i h
+        revert h
+        exact And.left
+    . cases h
+      . apply Or.inl
+        assumption
+      . apply Or.inr
+        rename_i h
+        revert h
+        exact And.right
+  . intro h
+    cases h with
+    | intro left right =>
+      cases left
+      . apply Or.inl 
+        assumption
+      . cases right 
+        . apply Or.inl
+          assumption
+        . apply Or.inr
+          apply andFollows
+          repeat assumption
