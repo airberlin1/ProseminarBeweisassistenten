@@ -210,59 +210,35 @@ example : ∃ (p : Nat),  p = 5 := by
   exists 5
 
 
-
--- big example, different ways, if there is still time
-example (p q r : Prop) : p ∧ (q ∨ r) ↔ (p ∧ q) ∨ (p ∧ r) := by
-  apply Iff.intro
-  . intro h
-    apply Or.elim (And.right h)
-    . intro hq
-      apply Or.inl
-      apply And.intro
-      . exact And.left h
-      . exact hq
-    . intro hr
-      apply Or.inr
-      apply And.intro
-      . exact And.left h
-      . exact hr
-  . intro h
-    apply Or.elim h
-    . intro hpq
-      apply And.intro
-      . exact And.left hpq
-      . apply Or.inl
-        exact And.right hpq
-    . intro hpr
-      apply And.intro
-      . exact And.left hpr
-      . apply Or.inr
-        exact And.right hpr
-
-example (p q r : Prop) : p ∧ (q ∨ r) ↔ (p ∧ q) ∨ (p ∧ r) := by
-  apply Iff.intro 
-  . intro h
-    cases h with 
-    | intro hp hqr =>
-      cases hqr
-      . apply Or.inl; constructor <;> assumption
-      . apply Or.inr; constructor <;> assumption
-  . intro h
-    cases h with
-    | inl hpq =>
-      cases hpq with 
-      | intro hp hq => constructor; exact hp; apply Or.inl; exact hq
-    | inr hpr => 
-      cases hpr with 
-      | intro hp hr => constructor; exact hp; apply Or.inr; exact hr
-
-
-
-
 -- tasks for second half (with solutions)
+variable (p q r : Prop)
+
 theorem andFollows : p → q → p ∧ q := by
   -- solution
   exact And.intro
+
+example : (p → (q → r)) ↔ (p ∧ q → r) := by
+  -- solution
+  -- this seems nice
+  apply Iff.intro
+  . intro hp hq
+    apply hp
+    exact And.left hq
+    exact And.right hq
+  . intro hp hq hr
+    apply hp
+    apply And.intro
+    repeat assumption
+
+example : ¬(p ∨ q) ↔ ¬p ∧ ¬q := by
+  -- keine Ahnung wie das geht
+  apply Iff.intro
+  . intro h
+    apply And.intro
+    . admit
+    . admit
+  . intro h
+    . admit
 
 example (p q : Prop) : p ∧ q → p ∨ q := by
   -- solution
@@ -312,8 +288,9 @@ example (x y : Nat) (hx : x = 3) (hy : x + y  = 6) : x = y := by
   apply Nat.add_left_cancel
   rw [hy]
 
-example (p q r : Prop) : p ∨ (q ∧ r) ↔ (p ∨ q) ∧ (p ∨ r) := by
+example : p ∨ (q ∧ r) ↔ (p ∨ q) ∧ (p ∨ r) := by
   -- solution
+  -- das hier halte ich fuer sinnvoll
   apply Iff.intro
   . intro h
     apply And.intro  
@@ -343,3 +320,12 @@ example (p q r : Prop) : p ∨ (q ∧ r) ↔ (p ∨ q) ∧ (p ∨ r) := by
         . apply Or.inr
           apply andFollows
           repeat assumption
+
+
+variable (men : Type) (barber : men)
+variable (shaves : men → men → Prop)
+
+
+example (h : ∀ x : men, shaves barber x ↔ ¬ shaves x x) : False := by
+  admit
+
