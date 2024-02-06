@@ -293,9 +293,14 @@ example (x y : Nat) (hx: x ≤ y) : ∃ (a : Nat), x + a = y := by
     cases hx
     . exists 0
     . rename_i ha
-      revert hd
-      rw [Nat.le_eq] at ha
-      intro hd     
+      revert ha
+      rw [Nat.le_eq]
+      rw [Nat.succ_eq_add_one]
+      -- I just need to take the existing nat and put it + 1 in the other equation and it will hold but I have no idea how to do it
+      intro ha
+      generalize hc :  d + 1 = e
+      -- none of this helps me somehow?
+      
       admit
 
 example (x y : Nat) (hx : x = 3) (hy : x + y  = 6) : x = y := by
