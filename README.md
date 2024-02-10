@@ -9,3 +9,5 @@ This repository is solely used for a university course at University of Hamburg.
 
 # Aufgaben
 - Die Aufgaben ohne Lösung sind [hier](https://github.com/airberlin1/ProseminarBeweisassistentenAufgaben/tree/main) zu finden.
+- Die Lösungen zu den Aufgaben sind unter testlean/solutions.lean zu finden. Hier sind auch noch zwei Beispiele, die aus dem 6. Vortrag vorgreifen.
+

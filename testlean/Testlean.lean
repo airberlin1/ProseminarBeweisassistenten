@@ -211,15 +211,10 @@ example : ∃ (p : Nat),  p = 5 := by
 
 
 -- tasks for second half (with solutions)
-variable (p q r : Prop)
-
-theorem andFollows : p → q → p ∧ q := by
-  -- solution
-  exact And.intro
+variable (p q r : Prop) 
 
 example : (p → (q → r)) ↔ (p ∧ q → r) := by
   -- solution
-  -- this seems nice
   apply Iff.intro
   . intro hp hq
     apply hp
@@ -230,16 +225,6 @@ example : (p → (q → r)) ↔ (p ∧ q → r) := by
     apply And.intro
     repeat assumption
 
-example : ¬(p ∨ q) ↔ ¬p ∧ ¬q := by
-  -- keine Ahnung wie das geht
-  apply Iff.intro
-  . intro h
-    apply And.intro
-    . admit
-    . admit
-  . intro h
-    . admit
-
 example (p q : Prop) : p ∧ q → p ∨ q := by
   -- solution
   intro h
@@ -247,50 +232,25 @@ example (p q : Prop) : p ∧ q → p ∨ q := by
   apply Or.inl
   assumption
 
-example (x : Nat) : x ≤ 0 → x = 0 := by
+example (α : Type) (p q : α → Prop) : (∀ x, p x → q x) → (∀ x, p x) → (∀ x, q x) := by
   -- solution
-  intro hx
-  cases hx with
-  | refl => rfl
+  intro hq hp x
+  exact hq x (hp x)
 
-example (x y : Nat) (hx: x ≤ y) : ∃ (a : Nat), x + a = y := by
-  -- solution
-  -- this is bad because it uses rw and induction
-  -- and also I can't even solve it
-  induction y with
-  | zero =>
-    rw [Nat.zero_eq] at hx
-    rw [Nat.zero_eq]
-    exists 0
-    rw [Nat.add_zero]
-    apply Nat.eq_zero_of_le_zero
-    assumption  
-  | succ d hd =>
-    cases hx
-    . exists 0
-    . rename_i ha
-      revert ha
-      rw [Nat.le_eq]
-      rw [Nat.succ_eq_add_one]
-      -- I just need to take the existing nat and put it + 1 in the other equation and it will hold but I have no idea how to do it
-      intro ha
-      generalize hc :  d + 1 = e
-      -- none of this helps me somehow?
-      
-      admit
+theorem pImpliesP (q : Type) : p → q → p := by
+  intros
+  assumption
 
-example (x y : Nat) (hx : x = 3) (hy : x + y  = 6) : x = y := by
+example (α : Type) : α → ((∀ x : α, r) ↔ r) := by
   -- solution
-  -- this is bad because it uses rw
-  rw [hx] at hy
-  rw [hx]
-  apply Eq.symm
-  apply Nat.add_left_cancel
-  rw [hy]
+  intro ha
+  apply Iff.intro
+  . intro h
+    exact h ha
+  . exact pImpliesP r α
 
 example : p ∨ (q ∧ r) ↔ (p ∨ q) ∧ (p ∨ r) := by
   -- solution
-  -- das hier halte ich fuer sinnvoll
   apply Iff.intro
   . intro h
     apply And.intro  
@@ -318,14 +278,50 @@ example : p ∨ (q ∧ r) ↔ (p ∨ q) ∧ (p ∨ r) := by
         . apply Or.inl
           assumption
         . apply Or.inr
-          apply andFollows
+          apply And.intro
           repeat assumption
 
+example (x : Nat) : x ≤ 0 → x = 0 := by
+  -- solution
+  intro hx
+  cases hx with
+  | refl => rfl
 
-variable (men : Type) (barber : men)
-variable (shaves : men → men → Prop)
 
 
-example (h : ∀ x : men, shaves barber x ↔ ¬ shaves x x) : False := by
-  admit
+
+-- hier noch ein paar Dinge, die durch Dinge bewiesen werden, die nicht in meinem Vortrag drankommen
+example (x y : Nat) (hx: x ≤ y) : ∃ (a : Nat), x + a = y := by
+  -- solution
+  -- this is bad because it uses rw and induction
+  induction y with
+  | zero =>
+    rw [Nat.zero_eq] at hx
+    rw [Nat.zero_eq]
+    exists 0
+    rw [Nat.add_zero]
+    apply Nat.eq_zero_of_le_zero
+    assumption  
+  | succ d hd =>
+    cases hx
+    . exists 0
+    . rename_i hb
+      revert hb
+      rw [Nat.le_eq]
+      rw [Nat.succ_eq_add_one]
+      intro hb
+      apply Exists.elim (hd hb)
+      intro a ha
+      exists (a + 1)
+      rw [← Nat.add_assoc]
+      rw [ha]
+
+example (x y : Nat) (hx : x = 3) (hy : x + y  = 6) : x = y := by
+  -- solution
+  -- this is bad because it uses rw
+  rw [hx] at hy
+  rw [hx]
+  apply Eq.symm
+  apply Nat.add_left_cancel
+  rw [hy]
 
