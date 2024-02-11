@@ -1,7 +1,5 @@
 # Tactics in Lean
 
-Alle Beispiele sowie die Aufgaben findet ihr auch unter TODO
-
 # Tactics?
 - Interaktive Beweisführung
   - Tactics Abschnitt wird mit "by" gestartet
