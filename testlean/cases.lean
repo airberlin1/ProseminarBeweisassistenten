@@ -33,8 +33,5 @@ theorem casesUnstructured (p q : Prop) : p ∨ q → q ∨ p := by
   assumption
 
 theorem casesStructured (p q : Prop) : p ∨ q → q ∨ p := by
-  intro h 
-  cases h with 
-  | inr hq => apply Or.inl; exact hq
-  | inl hp => apply Or.inr; exact hp
+  admit
 

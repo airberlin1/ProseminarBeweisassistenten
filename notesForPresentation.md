@@ -1,6 +1,13 @@
 
 
 # Notizen zur Präsentation
+## Set up
+- Mirror Screen to Beamer:
+```sh
+xrandr --output HDMI-A-0 --auto --same-as eDP
+```
+- Increase Letter Size with C-x C-+
+
 
 
 ## Tactics?
@@ -43,6 +50,13 @@
 - Anwenden von And.left, sodass das linke Element als wahr gesehen wird (denn beide muessen wahr sein)
 - Live-Ansicht zeigen
 ### applyMoreAdvanced
+```lean
+theorem applyMoreAdvanced (p q : Prop) (hp : p) (hq : q) : p ∧ q := by
+  apply And.intro
+  apply hp
+  apply hq
+
+```
 - mehrere Ziele nach erstem Apply, zeigen in Live-Ansicht
 - nacheinander bearbeiten der Ziele
 - ändere apply zu exact
@@ -116,6 +130,13 @@
 - Unstrukturiert mit Schreibweise wie oben
 ## mehr Beispiele
 ### casesUnstructured
+```lean
+theorem casesStructured (p q : Prop) : p ∨ q → q ∨ p := by
+  intro h 
+  cases h with 
+  | inr hq => apply Or.inl; exact hq
+  | inl hp => apply Or.inr; exact hp
+```
 - Live-Ansicht!
 - aufteilen des oder Ausdrucks mit cases
 - beweisen der einzelnen cases
@@ -165,7 +186,13 @@
 - angeben, welcher wert eine existenzsuche löst
 ### Beispiel Exists
 - Beispiel vom Beginn
-### maybe
-### Constructor
-### contradiction
-### match
+
+
+### Extra Time
+```lean
+example (α : Type) (p q : α → Prop) : (∀ x, p x → q x) → (∀ x, p x) → (∀ x, q x) := by
+  -- solution
+  intro hq hp x
+  exact hq x (hp x)
+```
+- talk about differences, similarities

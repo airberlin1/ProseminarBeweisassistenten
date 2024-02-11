@@ -85,7 +85,7 @@ example (a : Nat) (ha : a * 4 = 5) : a = 2 := by
 - Versucht Anwendung aller aktueller Hypothesen, um das Ziel zu lösen 
 ```lean
 example (p q : Nat) (hq : q = 2) (hp : p = 3) : p = 3 := by
-  assumption   -- wented hp an
+  assumption   -- wendet hp an
 ```
 
 ## Repeat

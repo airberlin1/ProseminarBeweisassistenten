@@ -43,3 +43,6 @@ example (a : Nat) (ha : a = 2) : a + 2 = 4 := by
 example : ∃ (p : Nat),  p = 5 := by
   exists 5
  
+
+example (α : Type) (p q : α → Prop) : (∀ x, p x → q x) → (∀ x, p x) → (∀ x, q x) :=
+  fun hp hq y => hp y (hq y)
