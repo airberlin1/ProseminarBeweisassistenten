@@ -56,7 +56,7 @@ example (α : Type) (p q : α → Prop) : (∃ x, p x ∧ q x) → ∃ x, q x �
 			- Nutze Intros, um "alle" Variablen einzuführen, ohne diese explizit zu bennen
 # Cases
 - Einzelne Cases können erstellt werden, die einzeln bewiesen werden
-- Nutze cases CaseName => oder ., um zwischen den einzelnen Cases zu unterscheiden
+- Nutze case CaseName => oder ., um zwischen den einzelnen Cases zu unterscheiden
 ```lean
 theorem casesIntro (p q : Prop) (hp : p) (hq : q) : p ∧ q ∧ p := by
   apply And.intro
@@ -80,7 +80,7 @@ theorem casesStructured (p q : Prop) : p ∨ q → q ∨ p := by
 - sorry in einem Tactics-Abschnitt
 ```lean
 example (a : Nat) (ha : a * 4 = 5) : a = 2 := by
-  admit  -- kann gerade nicht bewiesen werden, führt zu Fehlermeldung
+  admit  -- kann gerade nicht bewiesen werden, führt zu Fehlermeldung, aber nicht zu einem Kompilierfehler
 ```
 
 ## Assumption
@@ -126,27 +126,33 @@ example : ∃ (p : Nat),  p = 5 := by
 ```
 
 # Aufgaben
-```lean
-example (p q : Prop) : p ∧ q → p ∨ q := by
-  admit
-```
+Aufgaben können auch hier gefunden werden:
+https://github.com/airberlin1/ProseminarBeweisassistentenAufgaben/blob/main/TacticTasks.lean
+Dort sind auch die Lösungen sowie die Präsentationsdateien verlinkt.
 
 ```lean
-example (x : Nat) : x ≤ 0 → x = 0 := by
-  admit
-```
+variable {p q r : Prop}
 
-```lean
-example (x y : Nat) (hx: x ≤ y) : ∃ (a : Nat), x + a = y := by
+example : p ∧ q → p ∨ q := by
   admit
-```
 
-```lean
-example (x y : Nat) (hx : x = 3) (hy : x + y  = 6) : x = y := by
+example : (p → (q → r)) ↔ (p ∧ q → r) := by
   admit
-```
 
-```lean
-example (p q r : Prop) : p ∨ (q ∧ r) ↔ (p ∨ q) ∧ (p ∨ r) := by
+example (α : Type) (p q : α → Prop) : (∀ x, p x → q x) → (∀ x, p x) → (∀ x, q x) := by
+  admit
+
+theorem pImpliesP (q : Type) : p → q → p := by
+  admit
+
+example (α : Type) : α → ((∀ x : α, r) ↔ r) := by
+  admit
+
+example : p ∨ (q ∧ r) ↔ (p ∨ q) ∧ (p ∨ r) := by
+  admit
+
+variable {n m : Nat}
+
+example : n ≤ 0 → n = 0 := by
   admit
 ```
