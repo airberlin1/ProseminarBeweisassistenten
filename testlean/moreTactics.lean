@@ -5,7 +5,7 @@ example (a : Nat) (ha : a * 4 = 5) : a = 2 := by
   admit
 
 -- Assumption
-example (p q : Nat) (hq : q = 2) (hp : p = 3) : p = 3 := by
+example (p q : Nat) (_ : q = 2) (_ : p = 3) : p = 3 := by
   assumption 
 
 -- Repeat

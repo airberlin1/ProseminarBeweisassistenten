@@ -114,3 +114,37 @@ example (x y : Nat) (hx : x = 3) (hy : x + y  = 6) : x = y := by
   apply Nat.add_left_cancel
   rw [hy]
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
